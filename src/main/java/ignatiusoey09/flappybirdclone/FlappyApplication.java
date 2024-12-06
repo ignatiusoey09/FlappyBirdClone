@@ -30,7 +30,7 @@ public class FlappyApplication extends GameApplication {
 
     @Override
     protected void initUI() {
-        Label label = new Label("Test");
+        Label label = new Label("Press Space to jump");
         FXGL.addUINode(label, 350, 350);
     }
 
@@ -99,6 +99,7 @@ public class FlappyApplication extends GameApplication {
                 .at(100, 100)
                 .view(node)
                 .with(playerComponent)
+                .with(new PipeBuilderComponent())
                 .bbox(new HitBox(BoundingShape.box(50,50)))
                 .collidable()
                 .build();
