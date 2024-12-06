@@ -22,7 +22,8 @@ public class PlayerComponent extends Component {
     }
 
     public void jump() {
-        acceleration.addLocal(0, -2);
+        acceleration.y = 0;
+        acceleration.addLocal(0, -5);
     }
 
     public void stopVertical() {
