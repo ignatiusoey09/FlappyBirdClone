@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
@@ -35,9 +36,10 @@ public class FlappyApplication extends GameApplication {
 
     @Override
     protected void initInput() {
-        getInput().addAction(new UserAction("jump") {
+        Input input = getInput();
+        input.addAction(new UserAction("jump") {
             @Override
-            protected void onAction() {
+            protected void onActionBegin() {
                 playerComponent.jump();
             }
         }, KeyCode.SPACE);
@@ -47,6 +49,7 @@ public class FlappyApplication extends GameApplication {
     protected void initPhysics() {
         onCollision(EntityType.PLAYER, EntityType.WALL, (player, wall) -> {
             playerComponent.stopVertical();
+            player.yProperty().setValue(getAppHeight() - wall.getHeight() - player.getHeight());
         });
     }
 
