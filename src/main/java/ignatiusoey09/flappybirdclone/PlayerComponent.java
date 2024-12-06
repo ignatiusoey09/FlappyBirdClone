@@ -11,7 +11,7 @@ public class PlayerComponent extends Component {
     @Override
     public void onUpdate(double tpf) {
         if (isFalling) {
-            acceleration.y += tpf * 14;
+            acceleration.y += tpf * 10;
         }
 
         if (acceleration.y < -5) {
@@ -22,7 +22,7 @@ public class PlayerComponent extends Component {
     }
 
     public void jump() {
-        acceleration.addLocal(0, -10);
+        acceleration.addLocal(0, -2);
     }
 
     public void stopVertical() {
