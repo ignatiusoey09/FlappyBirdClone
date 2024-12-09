@@ -51,6 +51,11 @@ public class FlappyApplication extends GameApplication {
             playerComponent.stopVertical();
             player.yProperty().setValue(getAppHeight() - wall.getHeight() - player.getHeight());
         });
+
+        //Handle player collide with pipe
+        onCollision(EntityType.PLAYER, EntityType.PIPE, (player, pipe) -> {
+            getGameController().pauseEngine();
+        });
     }
 
     @Override
@@ -91,7 +96,7 @@ public class FlappyApplication extends GameApplication {
 
     private void initPlayer() {
         Paint paint = Paint.valueOf("#eb4034");
-        Node node = new Rectangle(50, 50, paint);
+        Node node = new Rectangle(40, 40, paint);
 
         playerComponent = new PlayerComponent();
         Entity player = entityBuilder()
