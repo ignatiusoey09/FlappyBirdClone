@@ -1,36 +1,50 @@
 package ignatiusoey09.flappybirdclone;
 
+import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-import static com.almasb.fxgl.dsl.FXGL.entityBuilder;
-import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class PipeBuilderComponent extends Component {
-    private boolean built = false;
-    private final double DISTANCE = 100.0;
+    private class PipeComponent extends Component {
+        private Vec2 velocity = new Vec2(-5.0, 0);
+        @Override
+        public void onUpdate(double tpf) {
+            entity.translate(velocity);
+        }
+    }
+
+    private final double DISTANCE = 100.0; //the distance between pipes
+    private final double INTERVAL = 1;
+    private double prev = getGameTimer().getNow();
+
     @Override
     public void onUpdate(double tpf) {
-        if (!built) {
+        if (getGameTimer().getNow() - prev >= INTERVAL) {
             buildPair();
-            built = true;
+            prev = getGameTimer().getNow();
         }
     }
 
     private void buildPair() {
         double height = FXGL.getAppHeight();
-        Rectangle topRect = new Rectangle(60, height/2 - DISTANCE);
+        Rectangle topRect = new Rectangle(60, (height - DISTANCE)/2);
         entityBuilder()
-                .at(500, 0)
+                .type(EntityType.PIPE)
+                .at(getAppWidth(), 0)
+                .with(new PipeComponent())
                 .viewWithBBox(topRect)
                 .collidable()
                 .buildAndAttach();
 
-        Rectangle botRect = new Rectangle(60, height/2 - DISTANCE, Paint.valueOf("#eb4034"));
+        Rectangle botRect = new Rectangle(60, (height - DISTANCE)/2, Paint.valueOf("#eb4034"));
         entityBuilder()
-                .at(500, getAppHeight() - DISTANCE)
+                .type(EntityType.PIPE)
+                .at(getAppWidth(), height/2 + DISTANCE)
+                .with(new PipeComponent())
                 .viewWithBBox(botRect)
                 .collidable()
                 .buildAndAttach();
