@@ -1,5 +1,5 @@
 package ignatiusoey09.flappybirdclone;
 
 public enum EntityType {
-    PLAYER, WALL, PIPE
+    PLAYER, WALL, PIPE, SCOREBOX
 }

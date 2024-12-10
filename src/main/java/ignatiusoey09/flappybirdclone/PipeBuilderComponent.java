@@ -2,6 +2,7 @@ package ignatiusoey09.flappybirdclone;
 
 import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.component.Component;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
@@ -55,6 +56,15 @@ public class PipeBuilderComponent extends Component {
                 .at(getAppWidth(), gapHeight + DISTANCE)
                 .with(new PipeComponent())
                 .viewWithBBox(botRect)
+                .collidable()
+                .buildAndAttach();
+
+        Rectangle scoreRect = new Rectangle(60, DISTANCE, Color.TRANSPARENT);
+        entityBuilder()
+                .type(EntityType.SCOREBOX)
+                .at(getAppWidth(), gapHeight)
+                .with(new PipeComponent())
+                .viewWithBBox(scoreRect)
                 .collidable()
                 .buildAndAttach();
     }

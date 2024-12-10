@@ -14,7 +14,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
+
+import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
@@ -29,9 +32,18 @@ public class FlappyApplication extends GameApplication {
     }
 
     @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("score", 0);
+    }
+
+    @Override
     protected void initUI() {
         Label label = new Label("Press Space to jump");
         FXGL.addUINode(label, 350, 350);
+
+        Text uiScore = new Text("");
+        uiScore.textProperty().bind(getip("score").asString());
+        FXGL.addUINode(uiScore, getAppWidth()/2.0, getAppHeight()/5.0);
     }
 
     @Override
@@ -55,6 +67,10 @@ public class FlappyApplication extends GameApplication {
         //Handle player collide with pipe
         onCollision(EntityType.PLAYER, EntityType.PIPE, (player, pipe) -> {
             getGameController().pauseEngine();
+        });
+
+        onCollisionEnd(EntityType.PLAYER, EntityType.SCOREBOX, (player, box) -> {
+            inc("score", 1);
         });
     }
 
