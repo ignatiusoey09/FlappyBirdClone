@@ -8,6 +8,7 @@ import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.texture.Texture;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -129,17 +130,16 @@ public class FlappyApplication extends GameApplication {
     }
 
     private void initPlayer() {
-        Paint paint = Paint.valueOf("#eb4034");
-        Node node = new Rectangle(40, 40, paint);
+        Texture birdTexture = texture("bird.png");
 
         playerComponent = new PlayerComponent();
         Entity player = entityBuilder()
                 .type(EntityType.PLAYER)
                 .at(100, 100)
-                .view(node)
+                .view(birdTexture)
                 .with(playerComponent)
                 .with(new PipeBuilderComponent())
-                .bbox(new HitBox(BoundingShape.box(50,50)))
+                .bbox(new HitBox(BoundingShape.box(30,30)))
                 .collidable()
                 .build();
 
