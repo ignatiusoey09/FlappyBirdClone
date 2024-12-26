@@ -15,11 +15,15 @@ public class PipeBuilderComponent extends Component {
     /**
      * Handles Pipe entity translation to the left
      */
-    private class PipeComponent extends Component {
+    public class PipeComponent extends Component {
         private final Vec2 velocity = new Vec2(-5.0, 0);
         @Override
         public void onUpdate(double tpf) {
             entity.translate(velocity);
+        }
+
+        public void stop() {
+            velocity.setZero();
         }
     }
 
