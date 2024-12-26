@@ -21,6 +21,7 @@ import javafx.util.Duration;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
@@ -68,11 +69,6 @@ public class FlappyApplication extends GameApplication {
 
     @Override
     protected void initPhysics() {
-        onCollision(EntityType.PLAYER, EntityType.WALL, (player, wall) -> {
-            playerComponent.stopVertical();
-            player.yProperty().setValue(getAppHeight() - wall.getHeight() - player.getHeight());
-        });
-
         //Handle player collide with pipe
         onCollision(EntityType.PLAYER, EntityType.PIPE, (player, pipe) -> {
             playerComponent.stopVertical();
@@ -80,7 +76,8 @@ public class FlappyApplication extends GameApplication {
             player.removeComponent(PipeBuilderComponent.class);
             List<Entity> entityList = getGameWorld().getEntitiesByType(EntityType.PIPE);
             for (Entity e:entityList) {
-                e.getComponent(PipeComponent.class).stop();
+                Optional<PipeComponent> opt = e.getComponentOptional(PipeComponent.class);
+                opt.ifPresent(pipeComponent -> pipeComponent.stop());
             }
 
             showGameOver();
@@ -113,14 +110,14 @@ public class FlappyApplication extends GameApplication {
     private void initFloorsCeilings() {
         Rectangle rect1 = new Rectangle(getAppWidth(), 30, Color.DARKGREEN);
         Entity ceiling = entityBuilder()
-                .type(EntityType.WALL)
+                .type(EntityType.PIPE)
                 .at(0, 0)
                 .view(rect1)
                 .buildAndAttach();
 
         Rectangle rect2 = new Rectangle(getAppWidth(), 30, Color.DARKGREEN);
         Entity floor = entityBuilder()
-                .type(EntityType.WALL)
+                .type(EntityType.PIPE)
                 .at(0, getAppHeight()-30)
                 .viewWithBBox(rect2)
                 .collidable()
