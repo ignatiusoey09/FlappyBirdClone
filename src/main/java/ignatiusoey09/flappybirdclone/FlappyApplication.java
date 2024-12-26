@@ -1,6 +1,5 @@
 package ignatiusoey09.flappybirdclone;
 
-import com.almasb.fxgl.app.FXGLApplication;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
@@ -20,9 +19,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
+
+import ignatiusoey09.flappybirdclone.PipeBuilderComponent.PipeComponent;
 
 public class FlappyApplication extends GameApplication {
     private PlayerComponent playerComponent;
@@ -55,6 +57,13 @@ public class FlappyApplication extends GameApplication {
                 playerComponent.jump();
             }
         }, KeyCode.SPACE);
+
+        input.addAction(new UserAction("restart") {
+            @Override
+            protected void onActionBegin() {
+                getGameController().startNewGame();
+            }
+        }, KeyCode.N);
     }
 
     @Override
@@ -66,7 +75,15 @@ public class FlappyApplication extends GameApplication {
 
         //Handle player collide with pipe
         onCollision(EntityType.PLAYER, EntityType.PIPE, (player, pipe) -> {
-            gameOver();
+            playerComponent.stopVertical();
+
+            player.removeComponent(PipeBuilderComponent.class);
+            List<Entity> entityList = getGameWorld().getEntitiesByType(EntityType.PIPE);
+            for (Entity e:entityList) {
+                e.getComponent(PipeComponent.class).stop();
+            }
+
+            showGameOver();
         });
 
         onCollisionEnd(EntityType.PLAYER, EntityType.SCOREBOX, (player, box) -> {
@@ -131,7 +148,7 @@ public class FlappyApplication extends GameApplication {
         spawnWithScale(player, Duration.seconds(0.2));
     }
 
-    public void gameOver() {
+    public void showGameOver() {
         BorderPane window = new BorderPane();
         window.setPrefSize(200, 200);
 
@@ -140,11 +157,12 @@ public class FlappyApplication extends GameApplication {
         score.setTextAlignment(TextAlignment.CENTER);
         VBox scoreBox = new VBox(finalScore, score);
 
-        window.setBottom(new Text("Press SPACE to retry"));
+        window.setBottom(new Text("Press N to retry"));
 
         window.setTop(scoreBox);
 
         getGameScene().addUINode(window);
+
     }
 
     public static void main(String[] args) {
