@@ -40,6 +40,7 @@ public class FlappyApplication extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("score", 0);
+        vars.put("gameOver", false);
     }
 
     @Override
@@ -69,11 +70,13 @@ public class FlappyApplication extends GameApplication {
 
     @Override
     protected void initPhysics() {
-        //Handle player collide with pipe
+        //Handle player collide with pipe or walls
         onCollision(EntityType.PLAYER, EntityType.PIPE, (player, pipe) -> {
             playerComponent.stopVertical();
 
             player.removeComponent(PipeBuilderComponent.class);
+            player.removeComponent(PlayerComponent.class);
+
             List<Entity> entityList = getGameWorld().getEntitiesByType(EntityType.PIPE);
             for (Entity e:entityList) {
                 Optional<PipeComponent> opt = e.getComponentOptional(PipeComponent.class);
@@ -112,7 +115,8 @@ public class FlappyApplication extends GameApplication {
         Entity ceiling = entityBuilder()
                 .type(EntityType.PIPE)
                 .at(0, 0)
-                .view(rect1)
+                .viewWithBBox(rect1)
+                .collidable()
                 .buildAndAttach();
 
         Rectangle rect2 = new Rectangle(getAppWidth(), 30, Color.DARKGREEN);
@@ -146,19 +150,23 @@ public class FlappyApplication extends GameApplication {
     }
 
     public void showGameOver() {
-        BorderPane window = new BorderPane();
-        window.setPrefSize(200, 200);
+        boolean isGameOver = getbp("gameOver").get();
+        if (!isGameOver) {
+            BorderPane window = new BorderPane();
+            window.setPrefSize(200, 200);
 
-        Text finalScore = new Text("Final Score:");
-        Text score = new Text(getip("score").getValue().toString());
-        score.setTextAlignment(TextAlignment.CENTER);
-        VBox scoreBox = new VBox(finalScore, score);
+            Text finalScore = new Text("Final Score:");
+            Text score = new Text(getip("score").getValue().toString());
+            score.setTextAlignment(TextAlignment.CENTER);
+            VBox scoreBox = new VBox(finalScore, score);
 
-        window.setBottom(new Text("Press N to retry"));
+            window.setBottom(new Text("Press N to retry"));
 
-        window.setTop(scoreBox);
+            window.setTop(scoreBox);
 
-        getGameScene().addUINode(window);
+            getGameScene().addUINode(window);
+            getbp("gameOver").setValue(true);
+        }
 
     }
 
