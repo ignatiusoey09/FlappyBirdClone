@@ -9,6 +9,7 @@ import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.Texture;
+import javafx.geometry.HorizontalDirection;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -33,8 +34,8 @@ public class FlappyApplication extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setWidth(700);
-        settings.setHeight(600);
+        settings.setWidth(512);
+        settings.setHeight(512);
         settings.setTitle("Flappy Bird");
     }
 
@@ -100,11 +101,13 @@ public class FlappyApplication extends GameApplication {
     }
 
     private void initBackground() {
-        Rectangle rect = new Rectangle(getAppWidth(), getAppHeight(), Color.WHITE);
+        Texture backgroundTexture = texture("background.png");
+        Texture backgroundCopy = backgroundTexture.copy();
+        Texture backgroundExtended = backgroundTexture.superTexture(backgroundCopy,
+                HorizontalDirection.RIGHT);
 
         Entity bg = entityBuilder()
-                .view(rect)
-                .with("rect", rect)
+                .view(backgroundExtended)
                 .buildAndAttach();
 
         bg.xProperty().bind(getGameScene().getViewport().xProperty());
