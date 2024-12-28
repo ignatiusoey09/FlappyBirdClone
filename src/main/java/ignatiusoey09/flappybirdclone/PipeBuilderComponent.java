@@ -2,6 +2,8 @@ package ignatiusoey09.flappybirdclone;
 
 import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.Texture;
 import javafx.geometry.Rectangle2D;
 import javafx.geometry.VerticalDirection;
@@ -58,21 +60,24 @@ public class PipeBuilderComponent extends Component {
         Texture pipeFlipped = pipeTexture.copy();
         pipeFlipped.setRotate(180.0);
 
-        Rectangle topRect = new Rectangle(60, gapHeight);
+        HitBox topHitbox = new HitBox(BoundingShape.box(52, 520));
+        HitBox bottomHitbox = new HitBox(BoundingShape.box(52,520));
+
         entityBuilder()
                 .type(EntityType.PIPE)
                 .at(getAppWidth(), -520 + gapHeight)
                 .with(new PipeComponent())
                 .view(pipeFlipped)
+                .bbox(topHitbox)
                 .collidable()
                 .buildAndAttach();
 
-        Rectangle botRect = new Rectangle(60, HEIGHT - PIPE_DISTANCE - gapHeight, Paint.valueOf("#eb4034"));
         entityBuilder()
                 .type(EntityType.PIPE)
                 .with(new PipeComponent())
                 .at(getAppWidth(), gapHeight + PIPE_DISTANCE)
                 .view(pipeTexture)
+                .bbox(bottomHitbox)
                 .collidable()
                 .buildAndAttach();
 
