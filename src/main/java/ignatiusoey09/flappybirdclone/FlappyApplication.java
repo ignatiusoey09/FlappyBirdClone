@@ -9,16 +9,12 @@ import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.Texture;
+import com.almasb.fxgl.ui.UI;
 import javafx.geometry.HorizontalDirection;
-import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 
 import java.util.List;
@@ -155,19 +151,16 @@ public class FlappyApplication extends GameApplication {
     public void showGameOver() {
         boolean isGameOver = getbp("gameOver").get();
         if (!isGameOver) {
-            BorderPane window = new BorderPane();
-            window.setPrefSize(200, 200);
+            int score = getip("score").get();
 
-            Text finalScore = new Text("Final Score:");
-            Text score = new Text(getip("score").getValue().toString());
-            score.setTextAlignment(TextAlignment.CENTER);
-            VBox scoreBox = new VBox(finalScore, score);
+            //instantiate ui controller
+            GameoverController gameover = new GameoverController();
+            //load fxml asset
+            UI gameoverUI = getAssetLoader().loadUI("gameoverScreen.fxml", gameover);
+            //inject fxml fields
+            gameover.getScore().textProperty().setValue(String.valueOf(score));
 
-            window.setBottom(new Text("Press N to retry"));
-
-            window.setTop(scoreBox);
-
-            getGameScene().addUINode(window);
+            getGameScene().addUI(gameoverUI);
             getbp("gameOver").setValue(true);
         }
 
