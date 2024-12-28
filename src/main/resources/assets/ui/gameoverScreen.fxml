@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="200.0" prefWidth="200.0"
+            translateX="160" translateY="125"
+            style="-fx-background-color: brown">
+    <VBox alignment="CENTER" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <Text text="Score:" textAlignment="CENTER"/>
+        <Text fx:id="score" textAlignment="CENTER"/>
+    </VBox>
+
+    <VBox alignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+        <Text text="Press N to retry" textAlignment="CENTER"/>
+    </VBox>
+
+</AnchorPane>
