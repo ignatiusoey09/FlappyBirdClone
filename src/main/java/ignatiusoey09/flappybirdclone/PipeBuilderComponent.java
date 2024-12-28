@@ -2,6 +2,9 @@ package ignatiusoey09.flappybirdclone;
 
 import com.almasb.fxgl.core.math.Vec2;
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.texture.Texture;
+import javafx.geometry.Rectangle2D;
+import javafx.geometry.VerticalDirection;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -29,7 +32,7 @@ public class PipeBuilderComponent extends Component {
 
     private final Random random = new Random();
     private final double HEIGHT = getAppHeight();
-    private final double DISTANCE = 140.0; //the distance between pipes
+    private final double PIPE_DISTANCE = 140.0; //the distance between pipes
 
     private final double BUILD_INTERVAL = 1.5; //time interval between pipe spawns
     private double prevPipeSpawn = getGameTimer().getNow();
@@ -43,27 +46,37 @@ public class PipeBuilderComponent extends Component {
     }
 
     private void buildPair() {
-        double gapHeight = random.nextDouble(HEIGHT - DISTANCE - 80) + 40;
+        //generate random gap height, with buffer for floor and ceiling
+        double gapHeight = random.nextDouble(HEIGHT - PIPE_DISTANCE - 80) + 40;
+
+        //retrieve pipe texture and extend by 200px
+        Texture pipeTexture = texture("pipe.png");
+        Texture pipeExtension = pipeTexture.subTexture(new Rectangle2D(0, 30,52, 230)); //200px sample of pipe, excluding head
+        pipeTexture = pipeTexture.superTexture(pipeExtension, VerticalDirection.DOWN);
+
+        //flip pipe texture for top pipes
+        Texture pipeFlipped = pipeTexture.copy();
+        pipeFlipped.setRotate(180.0);
 
         Rectangle topRect = new Rectangle(60, gapHeight);
         entityBuilder()
                 .type(EntityType.PIPE)
-                .at(getAppWidth(), 0)
+                .at(getAppWidth(), -520 + gapHeight)
                 .with(new PipeComponent())
-                .viewWithBBox(topRect)
+                .view(pipeFlipped)
                 .collidable()
                 .buildAndAttach();
 
-        Rectangle botRect = new Rectangle(60, HEIGHT - DISTANCE - gapHeight, Paint.valueOf("#eb4034"));
+        Rectangle botRect = new Rectangle(60, HEIGHT - PIPE_DISTANCE - gapHeight, Paint.valueOf("#eb4034"));
         entityBuilder()
                 .type(EntityType.PIPE)
-                .at(getAppWidth(), gapHeight + DISTANCE)
                 .with(new PipeComponent())
-                .viewWithBBox(botRect)
+                .at(getAppWidth(), gapHeight + PIPE_DISTANCE)
+                .view(pipeTexture)
                 .collidable()
                 .buildAndAttach();
 
-        Rectangle scoreRect = new Rectangle(60, DISTANCE, Color.TRANSPARENT);
+        Rectangle scoreRect = new Rectangle(60, PIPE_DISTANCE, Color.TRANSPARENT);
         entityBuilder()
                 .type(EntityType.SCOREBOX)
                 .at(getAppWidth(), gapHeight)
