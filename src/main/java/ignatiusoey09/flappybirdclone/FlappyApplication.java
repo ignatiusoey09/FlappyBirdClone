@@ -12,9 +12,9 @@ import com.almasb.fxgl.texture.Texture;
 import com.almasb.fxgl.ui.UI;
 import javafx.geometry.HorizontalDirection;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.util.List;
@@ -27,6 +27,7 @@ import ignatiusoey09.flappybirdclone.PipeBuilderComponent.PipeComponent;
 
 public class FlappyApplication extends GameApplication {
     private PlayerComponent playerComponent;
+    private ScoreDisplay scoreDisplay;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -43,9 +44,20 @@ public class FlappyApplication extends GameApplication {
 
     @Override
     protected void initUI() {
-        Text uiScore = new Text("");
-        uiScore.textProperty().bind(getip("score").asString());
-        FXGL.addUINode(uiScore, getAppWidth()/2.0, getAppHeight()/5.0);
+        scoreDisplay = new ScoreDisplay();
+        FXGL.onIntChange("score", (score) -> {
+            scoreDisplay.updateScore(score);
+            centerDisplay(scoreDisplay);
+        });
+        FXGL.addUINode(scoreDisplay);
+        centerDisplay(scoreDisplay);
+    }
+
+    private void centerDisplay(HBox node) {
+        FXGL.runOnce(() -> {
+            node.setTranslateX((FXGL.getAppWidth() - node.getLayoutX())/2);
+            node.setTranslateY(FXGL.getAppHeight()/5.0);
+        }, Duration.millis(1));
     }
 
     @Override
@@ -80,7 +92,7 @@ public class FlappyApplication extends GameApplication {
                 Optional<PipeComponent> opt = e.getComponentOptional(PipeComponent.class);
                 opt.ifPresent(pipeComponent -> pipeComponent.stop());
             }
-
+            getGameScene().removeUINode(scoreDisplay);
             showGameOver();
         });
 
