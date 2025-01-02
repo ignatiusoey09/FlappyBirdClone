@@ -2,16 +2,6 @@
 
 Welcome to my Flappy Bird clone! This project was built using JavaFX and FXGL as a way to learn software engineering concepts and improve my skills as a programmer
 
-## Table of Contents
-1. About the project
-2. Features
-3. Technology stack
-4. How to run
-5. Gameplay instructions
-6. Learning objectives
-7. Future improvements
-8. Acknowledgements
-
 ## About the project
 This is a simple recreation of the classic Flappy Bird game using the JavaFX library for UI and FXGL (a game development library) for game mechanics. The purpose of the project was to gain hands-on experience with Java-based game development and apply object-oriented programming principles, as well as learning about the build automation tool Gradle
 
