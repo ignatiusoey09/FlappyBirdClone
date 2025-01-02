@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-  mainClass = 'ignatiusoey09.flappybirdclone.FlappyApplication'
+  mainClass = 'ignatiusoey09.flappybirdclone.Main'
 }
 
 javafx {
@@ -43,6 +43,16 @@ dependencies {
 
 test {
 useJUnitPlatform()}
+
+jar {
+  duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+  manifest {
+    attributes 'Main-Class': 'ignatiusoey09.flappybirdclone.Main'
+  }
+  from {
+    configurations.runtimeClasspath.collect {it.isDirectory() ? it : zipTree(it)}
+  }
+}
 
 jlink {
   imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")

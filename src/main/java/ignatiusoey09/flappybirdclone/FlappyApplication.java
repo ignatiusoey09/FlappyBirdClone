@@ -33,6 +33,7 @@ public class FlappyApplication extends GameApplication {
     protected void initSettings(GameSettings settings) {
         settings.setWidth(512);
         settings.setHeight(512);
+        settings.setVersion("1.0");
         settings.setTitle("Flappy Bird");
     }
 
