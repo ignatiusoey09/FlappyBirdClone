@@ -31,6 +31,8 @@ This is a simple recreation of the classic Flappy Bird game using the JavaFX lib
 2. **OS: Windows**: No support for other OS as of now
 
 ### Steps
+![Screenshot 2025-01-02 174907](https://github.com/user-attachments/assets/2b4f6be1-829a-43f0-9183-7f3b9592b229)
+
 1. Download the release from this Github page
 2. In the command line/terminal, navigate to the folder containing the .jar file
 3. Type `java -jar FlappyBirdClone-1.0-SNAPSHOT.jar`
