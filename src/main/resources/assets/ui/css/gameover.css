@@ -1,0 +1,10 @@
+@font-face
+{
+    font-family:"PixelFont";
+    src: url("../fonts/PixelFont.ttf");
+}
+
+.gameover-title {
+    -fx-font-family: "PixelFont";
+    -fx-font-size: 24;
+}

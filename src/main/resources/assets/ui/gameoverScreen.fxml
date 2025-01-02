@@ -3,18 +3,24 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="200.0" prefWidth="200.0"
-            translateX="160" translateY="125"
-            style="-fx-background-color: brown">
-    <VBox alignment="CENTER" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-        <Text text="Score:" textAlignment="CENTER"/>
-        <Text fx:id="score" textAlignment="CENTER"/>
-    </VBox>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      translateX="110" translateY="120"
+      alignment="CENTER" spacing="30">
+    <Text fx:id="gameoverTitle" textAlignment="CENTER"/>
+    <AnchorPane prefHeight="125.0" prefWidth="300.0"
+                style="-fx-background-color:bisque; -fx-background-radius:5;
+                   -fx-border-color:white; -fx-border-width:4;
+                   -fx-border-radius:4;">
+        <VBox alignment="CENTER" AnchorPane.topAnchor="20.0"
+              AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              spacing="20.0">
+            <Text text="Score:" textAlignment="CENTER"/>
+            <HBox fx:id="score" />
+            <Text text="Press N to retry" textAlignment="CENTER"/>
+            <padding><Insets bottom="20.0"></Insets></padding>
+        </VBox>
 
-    <VBox alignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-        <Text text="Press N to retry" textAlignment="CENTER"/>
-    </VBox>
-
-</AnchorPane>
+    </AnchorPane>
+</VBox>

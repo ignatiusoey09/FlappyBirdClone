@@ -1,0 +1,110 @@
+16:07:17.788 [main                     ] DEBUG Logger               - Configured Logger
+16:07:17.832 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Flappy Bird
+Version: 0.0
+Width: 512
+Height: 512
+Fullscreen: false
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class com.almasb.fxgl.app.scene.SceneFactory
+
+16:07:18.268 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+16:07:18.277 [JavaFX Application Thread] INFO  Engine               - FXGL-17.3 (30.03.2023 11.49) on WINDOWS (J:17.0.12 FX:17.0.6)
+16:07:18.277 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+16:07:18.278 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 11 version 10.0
+16:07:18.278 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+16:07:18.278 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+16:07:18.278 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+16:07:18.278 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+16:07:18.389 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+16:07:18.443 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 512.0 x 512.0
+16:07:18.443 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    512.0 x 512.0
+16:07:18.444 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+16:07:18.445 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+16:07:18.453 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+16:07:18.586 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (14.66668701171875, 37.33331298828125)
+16:07:18.586 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 512.0 x 512.0
+16:07:18.587 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (1.0, 1.0)
+16:07:18.587 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 512.0 x 512.0
+16:07:18.587 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 526.6666870117188 x 549.3333129882812
+16:07:18.599 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+16:07:18.658 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class ignatiusoey09.flappybirdclone.FlappyApplication
+16:07:18.658 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+16:07:18.660 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/ui/css/fxgl_dark.css
+16:07:18.719 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: gameover.css
+16:07:18.719 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/ui/css/gameover.css
+16:07:18.724 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+16:07:18.786 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+16:07:18.888 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=512, physics.ppm=50.0
+16:07:18.889 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+16:07:18.896 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 512x512
+16:07:18.917 [FXGL Background Thread 1 ] WARN  FXGL.DefaultMenu     - FXGLDefaultMenu is not designed for resolutions < 800x600
+16:07:18.917 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+16:07:18.937 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+16:07:18.954 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/textures/particles/smoke.png
+16:07:19.089 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/textures/particles/trace_horizontal.png
+16:07:19.148 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+16:07:19.166 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+16:07:19.175 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\oeyig\IdeaProjects\FlappyBirdClone\system\fxgl.bundle
+16:07:19.186 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+16:07:19.186 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+16:07:19.191 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+16:07:19.192 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+16:07:19.192 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+16:07:19.193 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/languages/english.lang
+16:07:19.242 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.643 sec
+16:07:19.260 [JavaFX Application Thread] DEBUG Input                - Registered new binding: jump - Space
+16:07:19.260 [JavaFX Application Thread] DEBUG Input                - Registered new binding: restart - N
+16:07:19.261 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/textures/fxgl_icon.png
+16:07:19.277 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+16:07:19.283 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+16:07:19.288 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+16:07:19.307 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/oeyig/.gradle/caches/modules-2/files-2.1/com.github.almasb/fxgl/17.3/614d2b2607c97fe7b539dfa75036066a8010f74b/fxgl-17.3.jar!/fxglassets/textures/fxgl_default_cursor.png
+16:07:19.313 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+16:07:19.315 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+16:07:19.315 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+16:07:19.318 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+16:07:19.322 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+16:07:19.322 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+16:07:19.323 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+16:07:19.325 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:07:19.340 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to FXGLLoadingScene
+16:07:19.342 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> FXGLLoadingScene
+16:07:19.343 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+16:07:19.343 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+16:07:19.343 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+16:07:19.343 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+16:07:19.346 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+16:07:19.346 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Initializing game
+16:07:19.348 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/background.png
+16:07:19.418 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/bird.png
+16:07:19.442 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/0.png
+16:07:19.444 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/1.png
+16:07:19.446 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/2.png
+16:07:19.449 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/3.png
+16:07:19.450 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/4.png
+16:07:19.451 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/5.png
+16:07:19.453 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/6.png
+16:07:19.454 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/7.png
+16:07:19.455 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/8.png
+16:07:19.457 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/textures/numbers/9.png
+16:07:19.463 [FXGL Background Thread 4 ] INFO  FXGLApplication      - Game initialization took: 0.117 sec
+16:07:19.517 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+16:07:19.532 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+16:07:19.532 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+16:07:19.749 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  17.3
+16:07:19.749 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: 21.1
+16:07:20.342 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/ui/gameoverScreen.fxml
+16:07:20.407 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/oeyig/IdeaProjects/FlappyBirdClone/build/resources/main/assets/ui/fonts/PixelFont.ttf
+16:07:22.178 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+16:07:22.178 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+16:07:22.180 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+16:07:22.182 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\oeyig\IdeaProjects\FlappyBirdClone\system\fxgl.bundle
+16:07:22.184 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+16:07:22.185 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+16:07:22.225 [JavaFX Application Thread] DEBUG Logger               - Closing Logger

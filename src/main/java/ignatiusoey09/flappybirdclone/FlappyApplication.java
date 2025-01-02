@@ -170,7 +170,8 @@ public class FlappyApplication extends GameApplication {
             //load fxml asset
             UI gameoverUI = getAssetLoader().loadUI("gameoverScreen.fxml", gameover);
             //inject fxml fields
-            gameover.getScore().textProperty().setValue(String.valueOf(score));
+            gameover.getScore().getChildren().clear();
+            gameover.getScore().getChildren().addAll(scoreDisplay.getChildren());
 
             getGameScene().addUI(gameoverUI);
             getbp("gameOver").setValue(true);
